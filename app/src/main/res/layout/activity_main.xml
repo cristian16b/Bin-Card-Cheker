@@ -15,18 +15,39 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/textoTitulo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="@string/texto_ingrese_nros"
+                android:layout_centerHorizontal="true"
+                android:padding="20dp"
+                android:textSize="@dimen/txts_default"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <EditText
+                android:id="@+id/nroTarjetaText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textoTitulo"
+                android:paddingLeft="30dp"
+                android:maxLength="6"
+                android:inputType="numberDecimal" />
+
+
+
+            <LinearLayout
+                android:layout_below="@id/nroTarjetaText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
 
 
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

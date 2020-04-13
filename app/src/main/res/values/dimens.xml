@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fab_margin">10dp</dimen>
+
+    <dimen name="txts_small">16dp</dimen>
+    <dimen name="txts_default">20dp</dimen>
+    <dimen name="txts_titulo">22dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+</resources>
