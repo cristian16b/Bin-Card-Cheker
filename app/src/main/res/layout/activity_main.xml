@@ -29,18 +29,19 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutBotones"
-                android:layout_below="@id/textoTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/textoTitulo"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/nroTarjetaText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="6"
                     android:inputType="numberDecimal"
                     android:maxLength="6"
-                    android:ems="6"
                     android:padding="15dp" />
 
                 <ImageButton
@@ -52,9 +53,11 @@
 
 
             <LinearLayout
-                android:layout_below="@id/linearLayoutBotones"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/linearLayoutBotones"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
 
@@ -66,11 +69,90 @@
 
 
                     <TextView
-                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="@string/texto_sistema_pago"
+                        android:textSize="@dimen/txts_default" />
+
+                    <TextView
+                        android:id="@+id/sistemaPago"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/txts_default" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/texto_tipo_tarjeta"
+                        android:textSize="@dimen/txts_default" />
+
+                    <TextView
+                        android:id="@+id/tipoTarjeta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/txts_default" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/texto_pais"
+                        android:textSize="@dimen/txts_default" />
+
+                    <TextView
+                        android:id="@+id/pais"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/txts_default" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/texto_nombre_monedad"
+                        android:textSize="@dimen/txts_default" />
+
+                    <TextView
+                        android:id="@+id/nombreMoneda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/txts_default" />
+
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
