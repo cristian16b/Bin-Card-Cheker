@@ -45,9 +45,10 @@
                     android:padding="15dp" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/botonBuscar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="buscarDatosTarjeta"
                     app:srcCompat="@android:drawable/ic_menu_search" />
             </LinearLayout>
 
