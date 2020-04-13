@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BinCardChecker</string>
+    <string name="texto_ingrese_nros">Ingrese los 6 números de su tarjeta</string>
 </resources>
