@@ -5,10 +5,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -22,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton botonBuscarTarjeta;
     private EditText nroTarjetaEdit;
+    private TextView tipoTarjeta;
+    private TextView nombreTarjeta;
+    private TextView nombrePais;
+    private TextView monedaPais;
+    private TextView nombreBanco;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         botonBuscarTarjeta = (ImageButton) findViewById(R.id.botonBuscar);
         nroTarjetaEdit = (EditText) findViewById(R.id.nroTarjetaText);
 
+        tipoTarjeta = (TextView) findViewById(R.id.tipoTarjeta);
+        nombreTarjeta = (TextView) findViewById(R.id.sistemaPago);
+        nombrePais = (TextView) findViewById(R.id.pais);
+        monedaPais = (TextView) findViewById(R.id.nombreMoneda);
+        nombreBanco = (TextView) findViewById(R.id.nombreBanco);
     }
 
     public void buscarDatosTarjeta(View view) throws IOException {
@@ -44,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         {
             try
             {
+                Toast.makeText(this,R.string.msj_consultando_api,Toast.LENGTH_SHORT).show();
+                blanquearDatosTarjeta();
                 postHttpResponse(nroTarjetaTexto);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -55,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         String urlBase = "https://lookup.binlist.net/";
         String urlSolicitud = urlBase + nroIngresado;
-        Log.i("urlsolicitud",urlSolicitud);
         Request request = new Request.Builder()
                 .url(urlSolicitud)
                 .addHeader("Accept", "application/json")
@@ -64,11 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
-
-
-            // tener en cuenta
-            // https://stackoverflow.com/questions/36786132/okhttp-response-status-code-in-onfailure-method
-            // https://github.com/emiliano-sangoi/app-turnos/blob/master/app/src/main/java/com/example/emiliano/appturnos/backend/APITurnosManager.java
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -82,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
                 try
                 {
+                    //Log.i("codigoResp", String.valueOf(response.code()));
+
                     // Si la api retorna un 200
                     if(response.isSuccessful()){
                         String responseData = Objects.requireNonNull(response.body()).string();
@@ -89,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(responseData);
                         Log.i("ONRESPONSE",jsonObject.toString());
 
+                        mostrarDatosTarjeta(jsonObject);
                     }
                     else
                     {
@@ -122,5 +137,48 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void mostrarDatosTarjeta(JSONObject jsonObject){
+        try
+        {
+            Log.i("resultado",jsonObject.getString("scheme"));
+            String nombreTarj = jsonObject.getString("scheme");
+            String tipoTarj = jsonObject.getString("type");
+
+            JSONObject pais = jsonObject.getJSONObject("country");
+            String paisNombre = pais.getString("name");
+            String paisMoneda = pais.getString("currency");
+
+            /*
+            Log.i("resultado",jsonObject.getString("type"));
+            Log.i("resultado",pais.getString("name"));
+            Log.i("resultado",pais.getString("currency"));
+            */
+
+            JSONObject banco = jsonObject.getJSONObject("bank");
+            String bancoNombre = banco.getString("name");
+            //Log.i("resultado",banco.getString("name"));
+
+
+            nombreTarjeta.setText(nombreTarj);
+            tipoTarjeta.setText(tipoTarj);
+            nombreBanco.setText(bancoNombre);
+            nombrePais.setText(paisNombre);
+            monedaPais.setText(paisMoneda);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void blanquearDatosTarjeta(){
+
+        nombreTarjeta.setText("");
+        tipoTarjeta.setText("");
+        nombreBanco.setText("");
+        nombrePais.setText("");
+        monedaPais.setText("");
     }
 }
