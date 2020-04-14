@@ -58,9 +58,15 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/linearLayoutBotones"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,6 +91,10 @@
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,6 +119,10 @@
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,6 +146,10 @@
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -156,6 +174,11 @@
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -178,6 +201,12 @@
                         android:textSize="@dimen/txts_default" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
+
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
