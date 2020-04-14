@@ -1,28 +1,21 @@
 package com.example.bincardchecker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.List;
 import java.util.Objects;
-
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,20 +84,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     // Si la api retorna un 200
                     if(response.isSuccessful()){
-                        Gson gson = new Gson();
                         String responseData = Objects.requireNonNull(response.body()).string();
-                        Log.i("ONRESPONSE",responseData);
 
-                        //Type listType = new TypeToken<List<JsonResponse>>() {}.getType();
-                        //List<JsonResponse> listaJson = new Gson().fromJson(responseData, listType);
-
-
-
+                        JSONObject jsonObject = new JSONObject(responseData);
+                        Log.i("ONRESPONSE",jsonObject.toString());
 
                     }
                     else
                     {
-                        Log.i("responseCode", String.valueOf(response.code()));
                         switch(response.code()){
                             case 401: //unauthorized
                                 mostrarErrores(getString(R.string.msj_fallo_conex));
