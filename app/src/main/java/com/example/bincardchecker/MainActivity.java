@@ -142,33 +142,36 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarDatosTarjeta(JSONObject jsonObject){
         try
         {
-            Log.i("resultado",jsonObject.getString("scheme"));
-            String nombreTarj = jsonObject.getString("scheme");
-            String tipoTarj = jsonObject.getString("type");
+            //Log.i("resultado", String.valueOf(jsonObject));
+            final String nombreTarj = jsonObject.getString("scheme").toUpperCase();
+            final String tipoTarj = jsonObject.getString("type").toUpperCase();
 
             JSONObject pais = jsonObject.getJSONObject("country");
-            String paisNombre = pais.getString("name");
-            String paisMoneda = pais.getString("currency");
+            final String paisNombre = pais.getString("name").toUpperCase();
+            final String paisMoneda = pais.getString("currency").toUpperCase();
 
             /*
             Log.i("resultado",jsonObject.getString("type"));
             Log.i("resultado",pais.getString("name"));
             Log.i("resultado",pais.getString("currency"));
-            */
+             */
 
             JSONObject banco = jsonObject.getJSONObject("bank");
-            String bancoNombre = banco.getString("name");
-            //Log.i("resultado",banco.getString("name"));
+            final String bancoNombre = banco.getString("name").toUpperCase();
+            // Log.i("resultado",banco.getString("name"));
 
-
-            nombreTarjeta.setText(nombreTarj);
-            tipoTarjeta.setText(tipoTarj);
-            nombreBanco.setText(bancoNombre);
-            nombrePais.setText(paisNombre);
-            monedaPais.setText(paisMoneda);
-
-
-        } catch (JSONException e) {
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    nombreTarjeta.setText(nombreTarj);
+                    tipoTarjeta.setText(tipoTarj);
+                    nombreBanco.setText(bancoNombre);
+                    nombrePais.setText(paisNombre);
+                    monedaPais.setText(paisMoneda);
+                }
+            });
+        }
+        catch (JSONException e) {
             e.printStackTrace();
         }
     }
