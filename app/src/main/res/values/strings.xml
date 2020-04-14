@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">BinCardChecker</string>
-    <string name="texto_ingrese_nros">Ingrese los 6 números de su tarjeta</string>
+    <string name="texto_ingrese_nros">Ingrese los números de su tarjeta</string>
     <string name="texto_sistema_pago">Sistema de pago</string>
     <string name="texto_tipo_tarjeta">Tipo de tarjeta</string>
     <string name="texto_pais">País</string>
     <string name="texto_nombre_monedad">Moneda</string>
+    <string name="msj_nro_vacio">Debe ingresar el número de su tarjeta</string>
+    <string name="msj_fallo_conex">Fallo la conexión con el servidor, intente nuevamente</string>
+    <string name="msj_fallo_conex_defaul">Ocurrio un error al intentar conectarse, intente nuevamente</string>
 </resources>

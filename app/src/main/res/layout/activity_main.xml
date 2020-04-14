@@ -39,7 +39,7 @@
                     android:id="@+id/nroTarjetaText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="6"
+                    android:ems="8"
                     android:inputType="numberDecimal"
                     android:maxLength="6"
                     android:padding="15dp" />
